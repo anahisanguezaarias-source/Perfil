@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Manipulación del DOM</title>
+
+<style>
+    body {
+        background: #27457a;
+        color: white;
+        text-align: center;
+        font-family: Arial;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin: 10px;
+        background: #00c9d6;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #00aab5;
+    }
+
+    img {
+        width: 120px;
+        margin: 10px;
+    }
+
+    #texto {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Manipulación del DOM</h1>
+
+<button onclick="cambiarFondo()">Cambiar Fondo</button>
+<br>
+
+<button onclick="mostrarTexto()">Mostrar Texto</button>
+<p id="texto">Este humilde texto estaba oculto pero ya lo puedes ver 😄</p>
+
+<button onclick="contarClick()">Contar Click</button>
+<p id="contador">0</p>
+
+<img id="imagen" src="imagen.jpg">
+<br>
+
+<button onclick="cambiarImagen()">Cambiar Imagen</button>
+
+<script>
+function cambiarFondo() {
+    document.body.style.background = "#1abc9c";
+}
+
+function mostrarTexto() {
+    document.getElementById("texto").style.display = "block";
+}
+
+let contador = 0;
+
+function contarClick() {
+    contador++;
+    document.getElementById("contador").innerText = contador;
+}
+
+// cambiar imágenes
+let estado = 0;
+
+function cambiarImagen() {
+    let img = document.getElementById("imagen");
+
+    if (estado === 0) {
+        img.src = "imagen2.jpg";
+        estado = 1;
+    } else {
+        img.src = "imagen1.jpg";
+        estado = 0;
+    }
+}
+</script>
+
+</body>
+</html>

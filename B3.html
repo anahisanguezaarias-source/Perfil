@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formularios y Validaciones</title>
+
+<style>
+    body {
+        background: #0f2c33;
+        color: white;
+        text-align: center;
+        font-family: Arial;
+    }
+
+    input {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    button {
+        padding: 10px 15px;
+        margin: 10px;
+        background: #00c9d6;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Formularios y Validaciones</h2>
+
+<!-- Nombre -->
+<input type="text" id="nombre" placeholder="Nombre">
+<button onclick="validarNombre()">Validar Nombre</button>
+
+<br>
+
+<!-- Correo -->
+<input type="email" id="correo" placeholder="Correo">
+<button onclick="validarCorreo()">Validar Correo</button>
+
+<br><br>
+
+<!-- Promedio -->
+<input type="number" id="n1" placeholder="Nota 1">
+<input type="number" id="n2" placeholder="Nota 2">
+<input type="number" id="n3" placeholder="Nota 3">
+<button onclick="calcularPromedio()">Calcular Promedio</button>
+
+<p id="resultadoPromedio"></p>
+
+<br>
+
+<!-- Par o Impar -->
+<input type="number" id="numero" placeholder="Número">
+<button onclick="parImpar()">Par o Impar</button>
+
+<p id="resultadoNumero"></p>
+
+<script>
+// Nombre
+function validarNombre() {
+    let nombre = document.getElementById("nombre").value;
+
+    if (nombre === "") {
+        alert("Por favor ingresa un nombre");
+    } else {
+        alert("Nombre ingresado: " + nombre);
+    }
+}
+
+// Correo
+function validarCorreo() {
+    let correo = document.getElementById("correo").value;
+
+    if (correo === "") {
+        alert("Por favor ingresa un correo");
+    } else if (!correo.includes("@")) {
+        alert("Correo inválido");
+    } else {
+        alert("Correo ingresado: " + correo);
+    }
+}
+
+// Promedio
+function calcularPromedio() {
+    let n1 = parseFloat(document.getElementById("n1").value);
+    let n2 = parseFloat(document.getElementById("n2").value);
+    let n3 = parseFloat(document.getElementById("n3").value);
+
+    if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+        document.getElementById("resultadoPromedio").innerText = "Ingresa todas las notas";
+    } else {
+        let promedio = (n1 + n2 + n3) / 3;
+        document.getElementById("resultadoPromedio").innerText = "Promedio: " + promedio;
+    }
+}
+
+// Par o Impar
+function parImpar() {
+    let num = parseInt(document.getElementById("numero").value);
+
+    if (isNaN(num)) {
+        document.getElementById("resultadoNumero").innerText = "Ingresa un número válido";
+    } else {
+        if (num % 2 === 0) {
+            document.getElementById("resultadoNumero").innerText = "Es Par";
+        } else {
+            document.getElementById("resultadoNumero").innerText = "Es Impar";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
